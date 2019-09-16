@@ -1,0 +1,15 @@
+{
+  "name": "crackingthecodinginterview_6th_edition",
+  "version": "1.0.0",
+  "description": "Cracking the coding interview 6th edition promlem solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha \"*/**/*.spec.js\""
+  },
+  "author": "Daniel Zhitomirsky",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0"
+  }
+}
