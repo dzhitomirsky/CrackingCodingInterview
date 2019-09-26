@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const BinaryTree = require('../index');
+const {BinaryTree} = require('../index');
 
 describe('BST', () => {
     it('append & traverse in order', () => {

@@ -68,6 +68,7 @@ class BinaryTree {
         if (root.left) {
             this.traverseInOrder(visit, root.left);
         }
+
         visit(root);
 
         if (root.right) {
@@ -183,6 +184,38 @@ class BinaryTree {
     isEmpty() {
         return this.root === undefined;
     }
+
+    maxAndMinDepth() {
+        let maxDepth = 0;
+        let minDepth = Number.MAX_SAFE_INTEGER;
+
+        function traverse(node, depth) {
+            if(!node) {
+                return
+            }
+
+            if(node.right){
+                traverse(node.right, depth + 1);
+            }
+
+            if(node.left) {
+                traverse(node.left, depth + 1);
+            }
+
+            if(!node.right && !node.left) {
+                if(depth > maxDepth) {
+                    maxDepth = depth;
+                }
+
+                if(depth < minDepth) {
+                    minDepth = depth;
+                }
+            }
+        }
+
+        traverse(this.root, 1);
+        return [maxDepth, minDepth];
+    }
 }
 
-module.exports = BinaryTree;
+module.exports = {TreeNode ,BinaryTree};
