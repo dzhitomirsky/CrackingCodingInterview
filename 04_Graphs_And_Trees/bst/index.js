@@ -7,6 +7,7 @@ class TreeNode {
         this.parent = undefined;
         this.right = undefined;
         this.left = undefined;
+        this.size = 1;
     }
 }
 
@@ -25,12 +26,14 @@ class BinaryTree {
      */
     append(value) {
         if (!this.root) {
-            this.root = new TreeNode(value)
+            this.root = new TreeNode(value);
+
         } else {
             const node = new TreeNode(value);
             let pointer = this.root;
 
             while (true) {
+                pointer.size ++;
                 if (value < pointer.value) {
                     if (pointer.left) {
                         pointer = pointer.left
@@ -190,24 +193,24 @@ class BinaryTree {
         let minDepth = Number.MAX_SAFE_INTEGER;
 
         function traverse(node, depth) {
-            if(!node) {
+            if (!node) {
                 return
             }
 
-            if(node.right){
+            if (node.right) {
                 traverse(node.right, depth + 1);
             }
 
-            if(node.left) {
+            if (node.left) {
                 traverse(node.left, depth + 1);
             }
 
-            if(!node.right && !node.left) {
-                if(depth > maxDepth) {
+            if (!node.right && !node.left) {
+                if (depth > maxDepth) {
                     maxDepth = depth;
                 }
 
-                if(depth < minDepth) {
+                if (depth < minDepth) {
                     minDepth = depth;
                 }
             }
@@ -216,6 +219,10 @@ class BinaryTree {
         traverse(this.root, 1);
         return [maxDepth, minDepth];
     }
+
+    getSize() {
+        return this.root.size;
+    }
 }
 
-module.exports = {TreeNode ,BinaryTree};
+module.exports = {TreeNode, BinaryTree};
