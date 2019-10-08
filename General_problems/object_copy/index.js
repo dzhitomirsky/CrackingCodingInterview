@@ -14,8 +14,6 @@ function deepCopy(object) {
         case types.number:
         case types.undefined:
             return object;
-        case types.object && !object:
-            return null;
         case types.object: {
             if (!object) {
                 return null
