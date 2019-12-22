@@ -14,18 +14,17 @@ function findRoute(node1, node2) {
     q.push(root);
     //start BFS
     while (q.length !== 0 ) {
-        const relatives = q
-            .pop()
-            .relatives
-            .filter(r => !r.visited);
-
-        for(let i = 0; i < relatives.length; i ++) {
-            if(relatives[i] === node2) {
-                return true;
-            } else {
-                relatives[i].visited = true;
-                q.push(relatives[i]);
-            }
+        const next = q.shift();
+        if(next === node2) {
+            return true;
+        } else {
+            next.relatives
+                .filter(r => !r.visited)
+                .map(n => {
+                    n.visited = true;
+                    return n;
+                })
+                .forEach(n => q.push(n));
         }
     }
 

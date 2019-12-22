@@ -19,7 +19,7 @@ function isUnique(string) {
  * Without additional cache object we can get only O(NlogN)
  */
 function isUniqueWithNoAdditionDataStructures(string) {
-    const sorted = [...string].join('');
+    const sorted = [...string].sort().join('');
     for(let idx = 1; idx < sorted.length; idx ++) {
         if(sorted[idx - 1] === sorted[idx]) {
             return false;
